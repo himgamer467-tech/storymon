@@ -1,3 +1,5 @@
+let creatureCount = 1;
+
 const createBtn = document.getElementById("createBtn");
 const gallery = document.getElementById("gallery");
 
@@ -11,14 +13,17 @@ createBtn.addEventListener("click", () => {
     return;
   }
 
+  creatureCount++;
+
   const card = document.createElement("div");
 
   card.className = "card";
 
   card.innerHTML = `
-    <h2>${name}</h2>
+    <h2>#${String(creatureCount).padStart(4, "0")} ${name}</h2>
     <p><strong>Type:</strong> ${type}</p>
     <p>${description}</p>
+    <p><strong>Owner:</strong> Guest</p>
     <span class="badge">New Creature</span>
   `;
 
