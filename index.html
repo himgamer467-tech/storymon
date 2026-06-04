@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StoryMon</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
+
     <h1>StoryMon</h1>
     <p class="subtitle">Create and own unique creatures.</p>
 
     <div class="card">
       <h2>Create Creature</h2>
 
-      <input type="text" placeholder="Creature Name" />
+      <input id="name" type="text" placeholder="Creature Name">
 
-      <select>
+      <select id="type">
         <option>Fire</option>
         <option>Water</option>
         <option>Earth</option>
@@ -25,9 +26,9 @@
         <option>Shadow</option>
       </select>
 
-      <textarea placeholder="Describe your creature..."></textarea>
+      <textarea id="description" placeholder="Describe your creature..."></textarea>
 
-      <button>Create Creature</button>
+      <button id="createBtn">Create Creature</button>
     </div>
 
     <div class="card creature">
@@ -36,8 +37,12 @@
       <p>A legendary fox born from solar storms.</p>
       <span class="badge">Genesis Creature</span>
     </div>
+
+    <div id="gallery"></div>
+
   </div>
-  
-<script src="app.js"></script>
+
+  <script src="app.js"></script>
+
 </body>
 </html>
