@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StoryMon</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryMon</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>StoryMon</h1>
-    <p id="counter">Total Creatures: 1</p>
-    <p class="subtitle">Create and own unique creatures.</p>
+<h1>StoryMon</h1>
 
-    <div class="card">
-      <h2>Create Creature</h2>
+<p id="counter">Total Creatures: 0</p>
+<p class="subtitle">Create and own unique creatures.</p>
 
-      <input id="name" type="text" placeholder="Creature Name">
+<div class="card">
+<h2>🏆 Top StoryMon</h2>
 
-      <select id="type">
-        <option>Fire</option>
-        <option>Water</option>
-        <option>Earth</option>
-        <option>Air</option>
-        <option>Shadow</option>
-      </select>
+<div id="topCreature">
+No creatures yet
+</div>
+</div>
 
-      <textarea id="description" placeholder="Describe your creature..."></textarea>
+<div class="card">
 
-      <button id="createBtn">Create Creature</button>
-    </div>
+<h2>Create Creature</h2>
 
-    <div class="card creature">
-      <h2>#0001 Solar Fox</h2>
-      <p><strong>Type:</strong> Fire</p>
-      <p>A legendary fox born from solar storms.</p>
-      <span class="badge">Genesis Creature</span>
-    </div>
+<input
+id="name"
+type="text"
+placeholder="Creature Name"
+>
 
-    <div id="gallery"></div>
+<input
+id="owner"
+type="text"
+placeholder="Builder Name"
+>
 
-  </div>
+<input
+id="image"
+type="text"
+placeholder="Image URL"
+>
 
-  <script src="app.js"></script>
+<select id="type">
+<option>Fire</option>
+<option>Water</option>
+<option>Earth</option>
+<option>Air</option>
+<option>Shadow</option>
+</select>
+
+<select id="rarity">
+<option>Common</option>
+<option>Rare</option>
+<option>Epic</option>
+<option>Legendary</option>
+</select>
+
+<textarea
+id="description"
+placeholder="Describe your creature..."
+></textarea>
+
+<button id="createBtn">
+Create Creature
+</button>
+
+</div>
+
+<div id="gallery"></div>
+
+</div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
