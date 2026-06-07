@@ -60,6 +60,8 @@ rarityColor="#f39c12";
   card.innerHTML = `
 <h2>#${String(creature.id).padStart(4,"0")} ${creature.name}</h2>
 
+<img src="${creature.image}" alt="${creature.name}" class="creature-img">
+
 <p><strong>Story ID:</strong> STORY-${String(creature.id).padStart(4,"0")}</p>
 
 <p><strong>Type:</strong> ${creature.type}</p>
