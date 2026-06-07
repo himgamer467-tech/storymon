@@ -11,68 +11,61 @@
 
 <div class="container">
 
-<h1>StoryMon</h1>
+    <h1>StoryMon</h1>
 
-<p id="counter">Total Creatures: 0</p>
-<p class="subtitle">Create and own unique creatures.</p>
+    <p id="counter">Total Creatures: 0</p>
+    <p class="subtitle">Create and own unique creatures.</p>
 
-<div class="card">
-<h2>🏆 Top StoryMon</h2>
+    <div class="card leaderboard">
+        <h2>🏆 Top StoryMon</h2>
+        <div id="topCreature">
+            No creatures yet
+        </div>
+    </div>
 
-<div id="topCreature">
-No creatures yet
-</div>
-</div>
+    <div class="card">
 
-<div class="card">
+        <h2>Create Creature</h2>
 
-<h2>Create Creature</h2>
+        <label>Creature Name</label>
+        <input id="name" type="text" placeholder="Shadow Wolf">
 
-<input
-id="name"
-type="text"
-placeholder="Creature Name"
->
+        <label>Builder Name</label>
+        <input id="owner" type="text" placeholder="Salaar">
 
-<input
-id="owner"
-type="text"
-placeholder="Builder Name"
->
+        <label>Creature Image URL</label>
+        <input id="image" type="text" placeholder="Paste image link here">
 
-<input
-id="image"
-type="text"
-placeholder="Image URL"
->
+        <label>Element Type</label>
+        <select id="type">
+            <option>Fire</option>
+            <option>Water</option>
+            <option>Earth</option>
+            <option>Air</option>
+            <option>Shadow</option>
+        </select>
 
-<select id="type">
-<option>Fire</option>
-<option>Water</option>
-<option>Earth</option>
-<option>Air</option>
-<option>Shadow</option>
-</select>
+        <label>Rarity</label>
+        <select id="rarity">
+            <option>Common</option>
+            <option>Rare</option>
+            <option>Epic</option>
+            <option>Legendary</option>
+        </select>
 
-<select id="rarity">
-<option>Common</option>
-<option>Rare</option>
-<option>Epic</option>
-<option>Legendary</option>
-</select>
+        <label>Story / Description</label>
+        <textarea
+            id="description"
+            placeholder="Tell the story of your creature..."
+        ></textarea>
 
-<textarea
-id="description"
-placeholder="Describe your creature..."
-></textarea>
+        <button id="createBtn">
+            Create Creature
+        </button>
 
-<button id="createBtn">
-Create Creature
-</button>
+    </div>
 
-</div>
-
-<div id="gallery"></div>
+    <div id="gallery"></div>
 
 </div>
 
