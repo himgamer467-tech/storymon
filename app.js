@@ -118,7 +118,13 @@ if(
 alert("Please fill all fields");
 return;
 }
+  
+const hp = Math.floor(Math.random() * 300) + 200;
+const attack = Math.floor(Math.random() * 50) + 50;
+const defense = Math.floor(Math.random() * 50) + 50;
+const speed = Math.floor(Math.random() * 50) + 50;
 
+const power = hp + attack + defense + speed;
 const creature = {
 
 id: creatures.length + 1,
@@ -134,7 +140,13 @@ type,
 rarity,
 
 description,
-
+  
+hp,
+attack,
+defense,
+speed,
+power,
+  
 score:
 Math.floor(Math.random()*500)+1,
 
