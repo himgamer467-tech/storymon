@@ -103,6 +103,8 @@ document.getElementById("name").value;
 
 const owner =
 document.getElementById("owner").value;
+let image =
+document.getElementById("image").value.trim();
 
 const image =
 document.getElementById("image").value;
@@ -119,6 +121,7 @@ document.getElementById("description").value;
 if(
 !name ||
 !owner ||
+!image ||
 !description
 ){
 alert("Please fill all fields");
@@ -160,9 +163,12 @@ attack += 10;
 
 const power =
 hp + attack + defense + speed;
-
+  
+console.log(image);
+  
 const creature = {
-
+  
+  
 id: creatures.length + 1,
 
 name,
