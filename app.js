@@ -192,12 +192,8 @@ defense,
 speed,
 power,
   
-score:
-Math.floor(Math.random()*500)+1,
-
-power:
-Math.floor(Math.random()*1000)+100
-
+score:Math.floor(Math.random()*500)+1,
+  
 };
 
 creatures.push(creature);
