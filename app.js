@@ -57,16 +57,16 @@ rarityColor="#9b59b6";
 if(creature.rarity==="Legendary")
 rarityColor="#f39c12";
 
-card.innerHTML = `
-${creature.image ?
-`<img src="${creature.image}" class="creature-img">`
-: ""}
-
+  card.innerHTML = `
 <h2>#${String(creature.id).padStart(4,"0")} ${creature.name}</h2>
+
+<p><strong>Story ID:</strong> STORY-${String(creature.id).padStart(4,"0")}</p>
 
 <p><strong>Type:</strong> ${creature.type}</p>
 
 <p><strong>Owner:</strong> ${creature.owner}</p>
+
+<p><strong>Power:</strong> ${creature.power}</p>
 
 <p><strong>Score:</strong> ${creature.score}</p>
 
