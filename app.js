@@ -4,211 +4,195 @@ const gallery = document.getElementById("gallery");
 let creatures =
 JSON.parse(localStorage.getItem("storymon")) || [];
 
-function saveCreatures(){
-localStorage.setItem(
-"storymon",
-JSON.stringify(creatures)
-);
+function saveCreatures() {
+  localStorage.setItem(
+    "storymon",
+    JSON.stringify(creatures)
+  );
 }
 
-function updateCounter(){
-document.getElementById("counter").innerText =
-`Total Creatures: ${creatures.length}`;
+function updateCounter() {
+  document.getElementById("counter").innerText =
+    `Total Creatures: ${creatures.length}`;
 }
 
-function getTopCreature(){
+function getTopCreature() {
 
-if(creatures.length === 0){
-document.getElementById("topCreature").innerHTML =
-"No creatures yet";
-return;
+  if (creatures.length === 0) {
+    document.getElementById("topCreature").innerHTML =
+      "No creatures yet";
+    return;
+  }
+
+  let top = creatures.reduce((a, b) =>
+    a.score > b.score ? a : b
+  );
+
+  document.getElementById("topCreature").innerHTML =
+    `
+    <h3>${top.name}</h3>
+    <p>⭐ Score: ${top.score}</p>
+    <p>${top.rarity}</p>
+    `;
 }
 
-let top =
-creatures.reduce((a,b)=>
-a.score > b.score ? a : b
-);
+function renderCreatures() {
 
-document.getElementById("topCreature").innerHTML =
-`
-<h3>${top.name}</h3>
-<p>⭐ Score: ${top.score}</p>
-<p>${top.rarity}</p>
-`;
+  gallery.innerHTML = "";
+
+  creatures.forEach((creature) => {
+
+    const card = document.createElement("div");
+
+    card.className = "card creature";
+
+    let rarityColor = "#666";
+
+    if (creature.rarity === "Rare")
+      rarityColor = "#3498db";
+
+    if (creature.rarity === "Epic")
+      rarityColor = "#9b59b6";
+
+    if (creature.rarity === "Legendary")
+      rarityColor = "#f39c12";
+
+    card.innerHTML = `
+      <h2>#${creature.id} ${creature.name}</h2>
+
+      <img
+        src="${creature.image}"
+        alt="${creature.name}"
+        class="creature-img"
+        onerror="this.src='https://picsum.photos/500/300'"
+      >
+
+      <p><strong>Owner:</strong> ${creature.owner}</p>
+      <p><strong>Type:</strong> ${creature.type}</p>
+
+      <p><strong>Power:</strong> ${creature.power}</p>
+      <p><strong>Score:</strong> ${creature.score}</p>
+
+      <p><strong>HP:</strong> ${creature.hp}</p>
+      <p><strong>Attack:</strong> ${creature.attack}</p>
+      <p><strong>Defense:</strong> ${creature.defense}</p>
+      <p><strong>Speed:</strong> ${creature.speed}</p>
+
+      <p>${creature.description}</p>
+
+      <span
+        class="badge"
+        style="background:${rarityColor}"
+      >
+      ${creature.rarity}
+      </span>
+    `;
+
+    gallery.appendChild(card);
+  });
+
+  updateCounter();
+  getTopCreature();
 }
 
-function renderCreatures(){
+createBtn.addEventListener("click", () => {
 
-gallery.innerHTML = "";
+  const name =
+    document.getElementById("name").value.trim();
 
-creatures.forEach((creature)=>{
+  const owner =
+    document.getElementById("owner").value.trim();
 
-const card = document.createElement("div");
+  const image =
+    document.getElementById("image").value.trim();
 
-card.className = "card creature";
+  const type =
+    document.getElementById("type").value;
 
-let rarityColor = "#666";
+  const rarity =
+    document.getElementById("rarity").value;
 
-if(creature.rarity==="Rare")
-rarityColor="#3498db";
+  const description =
+    document.getElementById("description").value.trim();
 
-if(creature.rarity==="Epic")
-rarityColor="#9b59b6";
+  if (
+    !name ||
+    !owner ||
+    !image ||
+    !description
+  ) {
+    alert("Please fill all fields");
+    return;
+  }
 
-if(creature.rarity==="Legendary")
-rarityColor="#f39c12";
+  let hp =
+    Math.floor(Math.random() * 300) + 200;
 
-card.innerHTML = `
-<h2>#${creature.id} ${creature.name}</h2>
+  let attack =
+    Math.floor(Math.random() * 50) + 50;
 
-<img
-src="${creature.image}"
-class="creature-img"
-onerror="this.src='https://picsum.photos/500/300'"
->
+  let defense =
+    Math.floor(Math.random() * 50) + 50;
 
-<p><strong>Owner:</strong> ${creature.owner}</p>
-<p><strong>Type:</strong> ${creature.type}</p>
+  let speed =
+    Math.floor(Math.random() * 50) + 50;
 
-<p><strong>Power:</strong> ${creature.power}</p>
-<p><strong>Score:</strong> ${creature.score}</p>
+  if (type === "Fire") {
+    attack += 20;
+  }
 
-<p><strong>HP:</strong> ${creature.hp}</p>
-<p><strong>Attack:</strong> ${creature.attack}</p>
-<p><strong>Defense:</strong> ${creature.defense}</p>
-<p><strong>Speed:</strong> ${creature.speed}</p>
+  if (type === "Water") {
+    defense += 20;
+  }
 
-<p>${creature.description}</p>
+  if (type === "Earth") {
+    hp += 50;
+  }
 
-<span
-class="badge"
-style="background:${rarityColor}"
->
-${creature.rarity}
-</span>
-`;
+  if (type === "Air") {
+    speed += 15;
+  }
 
-gallery.appendChild(card);
+  if (type === "Shadow") {
+    speed += 20;
+    attack += 10;
+  }
 
-});
+  const power =
+    hp + attack + defense + speed;
 
-updateCounter();
-getTopCreature();
-}
+  const creature = {
 
-createBtn.addEventListener("click",()=>{
+    id: creatures.length + 1,
 
-const name =
-document.getElementById("name").value;
+    name,
+    owner,
+    image,
+    type,
+    rarity,
+    description,
 
-const owner =
-document.getElementById("owner").value;
-let image =
-document.getElementById("image").value.trim();
+    hp,
+    attack,
+    defense,
+    speed,
 
-const image =
-document.getElementById("image").value;
+    power,
 
-const type =
-document.getElementById("type").value;
+    score:
+      Math.floor(Math.random() * 500) + 1
+  };
 
-const rarity =
-document.getElementById("rarity").value;
+  creatures.push(creature);
 
-const description =
-document.getElementById("description").value;
+  saveCreatures();
 
-if(
-!name ||
-!owner ||
-!image ||
-!description
-){
-alert("Please fill all fields");
-return;
-}
+  renderCreatures();
 
-let hp =
-Math.floor(Math.random()*300)+200;
-
-let attack =
-Math.floor(Math.random()*50)+50;
-
-let defense =
-Math.floor(Math.random()*50)+50;
-
-let speed =
-Math.floor(Math.random()*50)+50;
-
-if(type==="Fire"){
-attack += 20;
-}
-
-if(type==="Water"){
-defense += 20;
-}
-
-if(type==="Earth"){
-hp += 50;
-}
-
-if(type==="Air"){
-speed += 15;
-}
-
-if(type==="Shadow"){
-speed += 20;
-attack += 10;
-}
-
-const power =
-hp + attack + defense + speed;
-  
-console.log(image);
-  
-const creature = {
-  
-  
-id: creatures.length + 1,
-
-name,
-
-owner,
-
-image,
-
-type,
-
-rarity,
-
-description,
-
-hp,
-
-attack,
-
-defense,
-
-speed,
-
-power,
-
-score:
-Math.floor(Math.random()*500)+1
-
-};
-
-creatures.push(creature);
-
-saveCreatures();
-
-renderCreatures();
-
-document.getElementById("name").value = "";
-document.getElementById("owner").value = "";
-document.getElementById("image").value = "";
-document.getElementById("description").value = "";
-
+  document.getElementById("name").value = "";
+  document.getElementById("owner").value = "";
+  document.getElementById("image").value = "";
+  document.getElementById("description").value = "";
 });
 
 renderCreatures();
