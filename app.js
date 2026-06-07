@@ -72,6 +72,14 @@ rarityColor="#f39c12";
 
 <p><strong>Score:</strong> ${creature.score}</p>
 
+<p><strong>HP:</strong> ${creature.hp}</p>
+
+<p><strong>Attack:</strong> ${creature.attack}</p>
+
+<p><strong>Defense:</strong> ${creature.defense}</p>
+
+<p><strong>Speed:</strong> ${creature.speed}</p>
+
 <p>${creature.description}</p>
 
 <span
