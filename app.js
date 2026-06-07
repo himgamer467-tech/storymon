@@ -150,16 +150,17 @@ if(
 alert("Please fill all fields");
 return;
 }
-  
-const hp = Math.floor(Math.random() * 300) + 200;
-const attack = Math.floor(Math.random() * 50) + 50;
-const defense = Math.floor(Math.random() * 50) + 50;
-const speed = Math.floor(Math.random() * 50) + 50;
+
+
 
 if(type === "Fire"){
  attack += 20;
 }
-
+  
+let hp = Math.floor(Math.random() * 300) + 200;
+let attack = Math.floor(Math.random() * 50) + 50;
+let defense = Math.floor(Math.random() * 50) + 50;
+let speed = Math.floor(Math.random() * 50) + 50;
 if(type === "Water"){
  defense += 20;
 }
