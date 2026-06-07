@@ -26,30 +26,36 @@
 
 <h2>Create Creature</h2>
 
-<input id="name" type="text" placeholder="Creature Name">
+<label>Creature Name</label>
+<input id="name" type="text" placeholder="Red Dragon">
 
-<input id="owner" type="text" placeholder="Builder Name">
+<label>Builder Name</label>
+<input id="owner" type="text" placeholder="Himanshu">
 
-<input id="image" type="text" placeholder="Image URL">
+<label>Image URL</label>
+<input id="image" type="text" placeholder="https://image-link.com">
 
+<label>Element Type</label>
 <select id="type">
-<option>Fire</option>
-<option>Water</option>
-<option>Earth</option>
-<option>Air</option>
-<option>Shadow</option>
+    <option>Fire</option>
+    <option>Water</option>
+    <option>Earth</option>
+    <option>Air</option>
+    <option>Shadow</option>
 </select>
 
+<label>Rarity</label>
 <select id="rarity">
-<option>Common</option>
-<option>Rare</option>
-<option>Epic</option>
-<option>Legendary</option>
+    <option>Common</option>
+    <option>Rare</option>
+    <option>Epic</option>
+    <option>Legendary</option>
 </select>
 
+<label>Creature Story</label>
 <textarea
 id="description"
-placeholder="Creature Story"
+placeholder="Write your creature story here..."
 ></textarea>
 
 <button id="createBtn">
