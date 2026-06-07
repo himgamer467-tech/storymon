@@ -134,7 +134,10 @@ rarity,
 description,
 
 score:
-Math.floor(Math.random()*500)+1
+Math.floor(Math.random()*500)+1,
+
+power:
+Math.floor(Math.random()*1000)+100
 
 };
 
