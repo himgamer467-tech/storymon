@@ -86,6 +86,10 @@ function renderCreatures() {
       >
       ${creature.rarity}
       </span>
+      
+      <button onclick="deleteCreature(${creature.id})">
+      🗑 Delete
+      </button>
     `;
 
     gallery.appendChild(card);
@@ -277,5 +281,19 @@ createBtn.addEventListener("click", () => {
   document.getElementById("image").value = "";
   document.getElementById("description").value = "";
 });
+
+function deleteCreature(id){
+
+if(!confirm("Delete this StoryMon?"))
+return;
+
+creatures = creatures.filter(
+c => c.id !== id
+);
+
+saveCreatures();
+renderCreatures();
+
+}
 
 renderCreatures();
