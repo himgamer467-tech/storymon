@@ -93,7 +93,74 @@ function renderCreatures() {
 
   updateCounter();
   getTopCreature();
+  updateBattleArena();
 }
+
+function updateBattleArena() {
+
+const fighter1 =
+document.getElementById("fighter1");
+
+const fighter2 =
+document.getElementById("fighter2");
+
+if(!fighter1 || !fighter2) return;
+
+fighter1.innerHTML = "";
+fighter2.innerHTML = "";
+
+creatures.forEach((creature,index)=>{
+
+fighter1.innerHTML += `
+<option value="${index}">
+${creature.name}
+</option>
+`;
+
+fighter2.innerHTML += `
+<option value="${index}">
+${creature.name}
+</option>
+`;
+
+});
+
+}
+
+document.addEventListener("click",(e)=>{
+
+if(e.target.id !== "battleBtn") return;
+
+const fighter1 =
+creatures[
+document.getElementById("fighter1").value
+];
+
+const fighter2 =
+creatures[
+document.getElementById("fighter2").value
+];
+
+if(!fighter1 || !fighter2){
+alert("Create at least 2 StoryMons");
+return;
+}
+
+let winner =
+fighter1.power > fighter2.power
+? fighter1
+: fighter2;
+
+document.getElementById(
+"battleResult"
+).innerHTML = `
+🏆 Winner:
+<b>${winner.name}</b>
+<br>
+Power: ${winner.power}
+`;
+
+});
 
 createBtn.addEventListener("click", () => {
 
