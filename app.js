@@ -160,6 +160,22 @@ document.getElementById(
 Power: ${winner.power}
 `;
 
+const history =
+document.getElementById(
+"battleHistory"
+);
+
+history.innerHTML += `
+<div class="card">
+⚔️ ${fighter1.name}
+vs
+${fighter2.name}
+<br>
+🏆 Winner:
+${winner.name}
+</div>
+`;
+
 });
 
 createBtn.addEventListener("click", () => {
