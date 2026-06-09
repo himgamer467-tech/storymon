@@ -23,13 +23,16 @@
 
 <div class="card">
 <p id="counter">Total Creatures: 0</p>
+
 <input
 id="searchInput"
 type="text"
 placeholder="🔍 Search StoryMon..."
->
+oninput="renderCreatures()">
 
-<select id="filterType">
+<select
+id="filterType"
+onchange="renderCreatures()">
 <option value="All">All Types</option>
 <option>Fire</option>
 <option>Water</option>
