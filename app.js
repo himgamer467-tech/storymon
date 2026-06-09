@@ -40,7 +40,26 @@ function renderCreatures() {
 
   gallery.innerHTML = "";
 
-  creatures.forEach((creature) => {
+  const searchText =
+  document.getElementById("searchInput")?.value.toLowerCase() || "";
+
+  const filterType =
+  document.getElementById("filterType")?.value || "All";
+
+  const filteredCreatures = creatures.filter(creature => {
+
+  const matchName =
+  creature.name.toLowerCase().includes(searchText);
+
+  const matchType =
+  filterType === "All" ||
+  creature.type === filterType;
+
+ return matchName && matchType;
+
+ });
+
+    filteredCreatures.forEach((creature) => {
 
     const card = document.createElement("div");
 
